@@ -4,35 +4,10 @@ from datetime import datetime
 import time
 import webbrowser as wb
 from bs4 import BeautifulSoup as BS
+from Product import Product
 products = []  # product list
 mixer.init()
 mixer.music.load("found.mp3")
-
-
-class Product:
-    def __init__(self, productName, productWebsite, productURL):
-        self.productName = productName
-        self.productURL = productURL
-        self.productWebsite = productWebsite
-
-    def getProductName(self):
-        return self.productName
-
-    def getProductURL(self):
-        return self.productURL
-
-    def getProductWebsite(self):
-        return self.productWebsite
-
-    def setProductName(self, productName):
-        self.productName = productName
-
-    def setProductURL(self, productURL):
-        self.productURL = productURL
-
-    def setProductWebsite(self, productWebsite):
-        self.productWebsite = productWebsite
-
 
 def loadProducts(fileName):
     inFile = open("urls.txt", "r")
@@ -111,6 +86,8 @@ def stockHelper():
         for product in products:
             time.sleep(1)
             stockFlag = product.check()
+
+
         stockFlag = stockChecker("newEgg")
         time.sleep(1)
         stockFlag = stockChecker("memoryExpress")
